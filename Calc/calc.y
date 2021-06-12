@@ -7,7 +7,7 @@
 
 %}
 
-%token	NUMBER MINUS PLUS DIV MULT LP RP
+%token	NUMBER MINUS PLUS DIV MULT LP RP AND OR IMP
 %token	END
 
 
@@ -37,6 +37,13 @@ T:
 ;
 
 Q:
+		R			{$$=$1;}
+	| Q OR R {$$=(int)$1||(int)$3;}
+	| Q AND R {$$=(int)$1&&(int)$3;}
+	| Q IMP R {$$=!(int)$1||(int)$3;}
+;
+
+R:
 		NUMBER {$$=$1;}
 	| LP S RP	{$$=$2;}
 	| MINUS NUMBER {$$=-$2;}

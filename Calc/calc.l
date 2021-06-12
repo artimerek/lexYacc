@@ -29,5 +29,8 @@ integer 	{digit}+
 "/"		return(DIV);
 "("		return(LP);
 ")"		return(RP);
+"||"	return(OR);
+"&&" 	return(AND);
+"=>" return(IMP);
 
 "\n"	return(END);
